@@ -8,26 +8,26 @@
 
 ## How to Run this project.
 
-This site imports demo data using the `fetch()`Api, which is normally blocked under `file://`. So, you'll have to serve files over **http** from project root, **this folder** (`bean_boutique_coffee_shop/`, where `index.html` lives). Any static file server should work. I have included 3 examples below, you may assign any `PORT` number that your local server uses (often `8080`, `5500`, `3000`).
+This site imports demo data using the `fetch()`Api, which is normally blocked under `file://`. So, you'll have to serve files over **http** from project root, **this folder** (`bean-boutique-coffee-shop/`, where `index.html` lives). Any static file server should work. I have included 3 examples below, you may assign any `PORT` number that your local server uses (often `8080`, `5500`, `3000`).
 
 ### VS Code - Live Server (or similar extension)
 
 1. Install a Live Server-style extension from the Marketplace (common choice: **Live Server** by Ritwick Dey, or equivalents that expose “Open with Live Server”).
-2. Open the project's root folder; **`bean_boutique_coffee_shop/`** as workspace in VSCode.
-3. Right‑click **`bean_boutique_coffee_shop/index.html`** → **Open with Live Server** (or the command palette action your extension registers).
+2. Open the project's root folder; **`bean-boutique-coffee-shop/`** as workspace in VSCode.
+3. Right‑click **`bean-boutique-coffee-shop/index.html`** → **Open with Live Server** (or the command palette action your extension registers).
 
 The preview URL for Live Server is often `http://127.0.0.1:5500/`.
 
 ### Python (built-in)
 
 ```bash
-cd path/to/bean_boutique_coffee_shop
+cd path/to/bean-boutique-coffee-shop
 python3 -m http.server 8080
 ```
 
 ### Node (`npx`, no global install)
 
-From `bean_boutique_coffee_shop/`:
+From `bean-boutique-coffee-shop/`:
 
 ```bash
 npx --yes serve -l 8080
