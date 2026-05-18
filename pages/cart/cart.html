@@ -1,0 +1,296 @@
+<!--
+  Eigbe Joshua, 224473, Frontend Web Development
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <title>Bean Boutique — Shopping cart</title>
+    <meta
+      name="description"
+      content="Snapshot of seeded cart rows stored locally in IndexedDB."
+    >
+    <link rel="stylesheet" href="../../css/main.css" >
+    <script src="../../init.js"></script>
+  </head>
+
+  <body class="layout layout_site">
+    <a class="skip-link" href="#cart-main">Skip to content</a>
+
+    <header class="site-header site-header_role_primary">
+      <div class="site-header__inner">
+        <div class="site-header__layout shell-header">
+          <a class="site-brand" href="../../index.html">
+            <span class="site-brand__name">Bean Boutique</span>
+            <span class="site-brand__tagline">Roastery · Workshops · Gear</span>
+          </a>
+          <div class="site-header__cluster">
+            <button
+              type="button"
+              class="site-nav__toggle"
+              aria-expanded="false"
+              aria-controls="site-nav-panel"
+              aria-label="Toggle navigation menu"
+              data-nav-toggle
+            >
+              <span class="site-nav__toggle-label">Menu</span>
+              <span class="site-nav__burger" aria-hidden="true"></span>
+            </button>
+            <nav
+              class="site-nav"
+              id="site-nav-panel"
+              aria-label="Primary navigation"
+            >
+              <ul class="site-nav__list">
+                <li class="site-nav__item">
+                  <a class="site-nav__link" href="../../index.html">Home</a>
+                </li>
+                <li class="site-nav__item">
+                  <a
+                    class="site-nav__link"
+                    href="../../products/coffee/coffees.html"
+                    >Coffee</a
+                  >
+                </li>
+                <li class="site-nav__item">
+                  <a
+                    class="site-nav__link"
+                    href="../../products/equipment/equipment.html"
+                    >Equipment</a
+                  >
+                </li>
+                <li class="site-nav__item">
+                  <a
+                    class="site-nav__link"
+                    href="../../pages/events/events.html"
+                    >Events</a
+                  >
+                </li>
+                <li class="site-nav__item">
+                  <a
+                    class="site-nav__link"
+                    href="../../pages/offers/offers.html"
+                    >Offers</a
+                  >
+                </li>
+                <li class="site-nav__item">
+                  <a
+                    class="site-nav__link"
+                    href="../../pages/subscription-plans/subscription-plans.html"
+                    >Plans</a
+                  >
+                </li>
+                <li class="site-nav__item">
+                  <a
+                    class="site-nav__link"
+                    href="../../pages/subscriptions/subscriptions.html"
+                    >Subscriptions</a
+                  >
+                </li>
+                <li class="site-nav__item">
+                  <a
+                    class="site-nav__link"
+                    href="../../pages/contact/contact.html"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+            <nav class="site-header__actions" aria-label="Account and basket">
+              <a
+                href="../../pages/profile/profile.html"
+                class="site-header__icon-link"
+                aria-label="Profile"
+              >
+                <svg
+                  class="site-header__icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <circle
+                    cx="12"
+                    cy="7"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+              </a>
+              <a
+                href="../../pages/cart/cart.html"
+                class="site-header__icon-link site-header__icon-link_cart site-header__icon-link_active"
+                aria-current="page"
+                data-cart-link
+                aria-label="Shopping basket"
+              >
+                <span class="site-header__cart-badge-wrap">
+                  <svg
+                    class="site-header__icon"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      cx="9"
+                      cy="21"
+                      r="1"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <circle
+                      cx="20"
+                      cy="21"
+                      r="1"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <path
+                      d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="site-header__cart-badge" data-cart-count hidden
+                    >0</span
+                  >
+                </span>
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout__main layout__wide" id="cart-main">
+      <nav
+        class="layout-muted layout__section breadcrumb-mini"
+        aria-label="Breadcrumb"
+      >
+        <a href="../../index.html">Home</a><span aria-hidden="true"> / </span
+        ><span aria-current="page">Shopping basket</span>
+      </nav>
+      <header class="layout__section">
+        <h1 class="layout__section-title">Shopping basket</h1>
+        <p class="layout-muted"></p>
+      </header>
+
+      <p data-cart-status class="layout-muted"></p>
+
+      <div class="layout__section cart-page-lines">
+        <div
+          class="cart-card-list"
+          data-cart-body
+          role="list"
+          aria-label="Basket line items"
+        ></div>
+        <div class="cart-summary">
+          Basket total:&nbsp;<span data-cart-total>£0.00</span>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer site-footer_nav">
+      <div class="site-footer__inner">
+        <div class="site-footer__columns site-footer__columns_spread">
+          <div class="site-footer__lead">
+            <p class="site-footer__brand">Bean Boutique</p>
+            <p class="site-footer__lead-copy">
+              Independent Manchester roastery pairing small-batch beans with
+              hands-on workshops and curated brew gear. We taste obsessively,
+              roast transparently, and shape subscriptions around the way you
+              drink at home.
+            </p>
+            <p>
+              <a
+                class="btn btn_ghost btn_compact"
+                href="../../pages/subscription-plans/subscription-plans.html"
+                >View our plans</a
+              >
+            </p>
+          </div>
+          <section>
+            <h2 class="site-footer__heading">Visit Us</h2>
+            <p class="layout-muted">
+              Bean Yard Annex (demo)<br >Oxford Road · Manchester
+            </p>
+            <ul class="site-footer__list layout-muted">
+              <li>Daily brew bar · 07:30 – 17:30</li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="site-footer__heading">Our Offerings</h2>
+            <ul class="site-footer__list">
+              <li>
+                <a
+                  href="../../products/coffee/coffees.html"
+                  class="site-footer__link"
+                  >Coffees</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../../products/equipment/equipment.html"
+                  class="site-footer__link"
+                  >Equipment</a
+                >
+              </li>
+              <li>
+                <a href="../offers/offers.html" class="site-footer__link"
+                  >Offers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../subscription-plans/subscription-plans.html"
+                  class="site-footer__link"
+                  >Plans</a
+                >
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="site-footer__heading">Contact Us</h2>
+            <ul class="site-footer__list">
+              <li>
+                <a href="../contact/contact.html" class="site-footer__link"
+                  >Contact</a
+                >
+              </li>
+              <li>
+                <a href="../events/events.html" class="site-footer__link"
+                  >Events</a
+                >
+              </li>
+            </ul>
+          </section>
+        </div>
+        <small class="site-footer__copy layout-muted"
+          >&copy; Bean Boutique | Eigbe Joshua 224473 | NCC Frontend Web
+          Development | All rights reserved.</small
+        >
+      </div>
+    </footer>
+    <script defer src="../../script/db.js"></script>
+    <script defer src="../../script/cart-badge.js"></script>
+    <script defer src="../../script/shell-nav.js"></script>
+    <script defer src="../../script/cart-mount.js"></script>
+  </body>
+</html>
